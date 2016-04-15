@@ -1,0 +1,9 @@
+---
+# defaults file for ansible-role-repo-epel
+
+repo_epel_rpm: True
+repo_epel_baseurl: ""
+#repo_epel_baseurl: http://download.fedoraproject.org/pub/epel/7/$basearch
+repo_epel_mirrorlist: ""
+#repo_epel_mirrorlist: "https://mirrors.fedoraproject.org/metalink?repo=epel-7&arch=$basearch"
+repo_epel_backup: no

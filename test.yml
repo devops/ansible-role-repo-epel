@@ -1,0 +1,10 @@
+---
+# test file
+
+- name: Install epel repo.
+  hosts: servers
+  roles:
+    - role: ansible-role-repo-epel
+      repo_epel_baseurl: http://mirrors.ustc.edu.cn/epel/7/x86_64/
+      #repo_epel_mirrorlist: "https://mirrors.fedoraproject.org/metalink?repo=epel-7&arch=$basearch"
+      repo_epel_rpm: False

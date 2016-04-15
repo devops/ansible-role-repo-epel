@@ -1,0 +1,18 @@
+---
+# tasks file for ansible-role-repo-epel
+
+- name: Install the epel rpm package.
+  yum: name=epel-release state=installed
+  when: repo_epel_rpm
+  
+- name: Configurage epel repo files.
+  template: src=epel.repo.j2 dest='/etc/yum.repos.d/epel.repo' backup={{ repo_epel_backup }}
+  when: not repo_epel_rpm
+
+- name: Configurage epel-testing repo files.
+  template: src=epel-testing.repo.j2 dest=/etc/yum.repos.d/epel-testing.repo backup={{ repo_epel_backup }}
+  when: not repo_epel_rpm
+
+- name: Prepare the GPG key for epel.
+  copy: src=RPM-GPG-KEY-EPEL-{{ ansible_distribution_major_version }} dest=/etc/pki/rpm-gpg
+  when: not repo_epel_rpm
